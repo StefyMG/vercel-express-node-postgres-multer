@@ -1,0 +1,52 @@
+swagger: "2.0"
+info:
+  version: "0.0.1"
+  title: API Servicio de Obras y Proyectos Castilla
+# during dev, should point to your local machine
+host: localhost:10010
+# basePath prefixes all resource paths 
+basePath: /
+# 
+schemes:
+  # tip: remove http to make production-grade
+  - http
+  - https
+# format of bodies a client can send (Content-Type)
+consumes:
+  - application/json
+# format of the responses to the client (Accepts)
+produces:
+  - application/json
+paths:
+  /datos:
+    get:
+      description: Return la tabla de datos de  Servicio de Obras y Proyectos Castilla
+      # used as the method name of the controller
+      parameters:
+        - name: id
+          in: url
+          description: El identificador de la tabla
+          required: false
+          type: integer
+      responses:
+        "200":
+          description: Success
+          
+        # responses may fall through to errors
+        
+  /swagger:
+    x-swagger-pipe: swagger_raw
+# complex objects have schema definitions
+definitions:
+  HelloWorldResponse:
+    required:
+      - message
+    properties:
+      message:
+        type: string
+  ErrorResponse:
+    required:
+      - message
+    properties:
+      message:
+        type: string
